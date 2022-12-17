@@ -11,7 +11,7 @@ public class Dump {
     private static final Random PRNG = new Random();
 
     // собирает от 1 до 4 случайных деталей для первого ученого
-    public List<RobotParts> collectParts1() {
+    public void collectParts1() {
         if (!parts.isEmpty()) {
             int randomlySelectedIndex = PRNG.nextInt(parts.size());
             RobotParts element = parts.get(randomlySelectedIndex);
@@ -19,11 +19,10 @@ public class Dump {
             scientistsList1.add(element);
         }
         System.out.println("First scientist's list " + scientistsList1);
-        return scientistsList1;
     }
 
     // собирает от 1 до 4 случайных деталей для второго ученого
-    public List<RobotParts> collectParts2() {
+    public void collectParts2() {
         if (!parts.isEmpty()) {
             int randomlySelectedIndex = PRNG.nextInt(parts.size());
             RobotParts element = parts.get(randomlySelectedIndex);
@@ -31,7 +30,6 @@ public class Dump {
             scientistsList2.add(element);
         }
         System.out.println("Second scientist's list " + scientistsList2);
-        return scientistsList2;
     }
 
     // выбрасывает на свалку от 1 до 4 случайных деталей
@@ -53,7 +51,7 @@ public class Dump {
                 map.put(parts, map.get(parts) + 1);
             }
         }
-//        System.out.println(map);
+        System.out.println(map);
         if (map.size() < RobotParts.values().length) {        // если какой-либо части нет, то кол-во собранных роботов = 0
             return 0;
         }
