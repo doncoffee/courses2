@@ -51,7 +51,7 @@ public class Dump {
                 map.put(parts, map.get(parts) + 1);
             }
         }
-        System.out.println(map);
+//        System.out.println(map);
         if (map.size() < RobotParts.values().length) {        // если какой-либо части нет, то кол-во собранных роботов = 0
             return 0;
         }
