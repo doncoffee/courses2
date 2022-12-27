@@ -8,7 +8,8 @@ public class MadScientist1 implements Runnable {
 
     @Override
     public void run() {
-        for (int i = 0; i < 100; i++) { // 100 ночей
+        for (int i = 1; i < 101; i++) { // 100 ночей
+            System.out.println(i + " first madScientist night");
             dump.collectParts1();
             try {
                 Thread.sleep(100);

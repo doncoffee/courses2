@@ -3,6 +3,7 @@ package homework2.mad_scientists;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public enum RobotParts {
     HEAD,
@@ -23,7 +24,7 @@ public enum RobotParts {
 
     // задает первичный лист из 20 случайных деталей
     public static List<RobotParts> generateRobotParts(int quantity) {
-        List<RobotParts> list = new ArrayList<>();
+        List<RobotParts> list = new CopyOnWriteArrayList<>();
         for (int i = 0; i < quantity; i++) {
             list.add(RobotParts.getRandomParts());
         }

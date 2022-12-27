@@ -38,6 +38,7 @@ public class Dump {
         for (int i = 0; i < randomQuantity; i++) {
             parts.add(RobotParts.getRandomParts());
         }
+        System.out.println("General list " + parts);
     }
 
     // считает роботов для победы ученых
