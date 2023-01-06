@@ -4,38 +4,14 @@ import java.util.*;
 
 public class Dump {
 
-    private List<RobotParts> parts = RobotParts.generateRobotParts(20);
-    private List<RobotParts> scientistsList1 = new ArrayList<>();
-    private List<RobotParts> scientistsList2 = new ArrayList<>();
-
+    public static final int UPPER_BOUND = 4;
+    public static final int LOWER_BOUND = 1;
+    private volatile List<RobotParts> parts = RobotParts.generateRobotParts(20);
     private static final Random PRNG = new Random();
-
-    // собирает от 1 до 4 случайных деталей для первого ученого
-    public void collectParts1() {
-        if (!parts.isEmpty()) {
-            int randomlySelectedIndex = PRNG.nextInt(parts.size());
-            RobotParts element = parts.get(randomlySelectedIndex);
-            parts.remove(randomlySelectedIndex);
-            scientistsList1.add(element);
-        }
-        System.out.println("First scientist's list " + scientistsList1);
-    }
-
-    // собирает от 1 до 4 случайных деталей для второго ученого
-    public void collectParts2() {
-        if (!parts.isEmpty()) {
-            int randomlySelectedIndex = PRNG.nextInt(parts.size());
-            RobotParts element = parts.get(randomlySelectedIndex);
-            parts.remove(randomlySelectedIndex);
-            scientistsList2.add(element);
-        }
-        System.out.println("Second scientist's list " + scientistsList2);
-    }
 
     // выбрасывает на свалку от 1 до 4 случайных деталей
     public void produceParts() {
-        int randomQuantity = PRNG.nextInt(1, 4);
-        for (int i = 0; i < randomQuantity; i++) {
+        for (int i = 0; i < PRNG.nextInt(UPPER_BOUND) + LOWER_BOUND; i++) {
             parts.add(RobotParts.getRandomParts());
         }
         System.out.println("General list " + parts);
@@ -44,7 +20,6 @@ public class Dump {
     // считает роботов для победы ученых
     public int countRobots(List<RobotParts> scientistsList) {
         Map<RobotParts, Integer> map = new HashMap<>();
-        scientistsList.removeAll(Collections.singletonList(null));
         for (RobotParts parts : scientistsList) {
             if (!map.containsKey(parts)) {
                 map.put(parts, 1);
@@ -59,11 +34,7 @@ public class Dump {
         return Collections.min(map.values());                 // возвращает наименьшее кол-во собранных деталей
     }
 
-    public List<RobotParts> getScientistsList1() {
-        return scientistsList1;
-    }
-
-    public List<RobotParts> getScientistsList2() {
-        return scientistsList2;
+    public List<RobotParts> getParts() {
+        return parts;
     }
 }

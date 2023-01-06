@@ -1,7 +1,9 @@
 package homework2.mad_scientists;
 
 public class Factory implements Runnable {
-    Dump dump;
+    public static final int MILLIS = 100;
+    public static final int NIGHTS = 100;
+    private final Dump dump;
 
     public Factory(Dump dump) {
         this.dump = dump;
@@ -9,11 +11,11 @@ public class Factory implements Runnable {
 
     @Override
     public void run() {
-        for (int i = 1; i < 101; i++) {
+        for (int i = 1; i <= NIGHTS; i++) {
             System.out.println(i + " factory night");
             dump.produceParts();
             try {
-                Thread.sleep(100);
+                Thread.sleep(MILLIS);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

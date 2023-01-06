@@ -30,5 +30,4 @@ public enum RobotParts {
         }
         return list;
     }
-
 }
